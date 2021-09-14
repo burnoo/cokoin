@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "dev.burnoo"
-version = "0.1.0"
+version = "0.1.1"
 
 kotlin {
     jvm()
@@ -68,7 +68,6 @@ publishing {
     }
     publications.withType<MavenPublication> {
         artifact(javadocJar.get())
-        artifactId = project.name
         pom {
             name.set(project.name)
             description.set("Dependency Injection library for Compose Multiplatform, Koin wrapper.")
