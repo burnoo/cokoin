@@ -1,1 +1,1 @@
-include(":library", ":androidSample", ":desktopSample")
+include(":cokoin", ":androidSample", ":desktopSample")

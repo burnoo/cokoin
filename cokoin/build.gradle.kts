@@ -3,7 +3,6 @@ import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
-    id("com.android.library")
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("maven-publish")
@@ -14,9 +13,6 @@ group = "dev.burnoo"
 version = "0.1.0"
 
 kotlin {
-    android {
-        publishLibraryVariants("release", "debug")
-    }
     jvm()
     js(IR) {
         browser()
@@ -27,26 +23,6 @@ kotlin {
                 api(compose.runtime)
                 api("io.insert-koin:koin-core:3.1.2")
             }
-        }
-    }
-}
-
-android {
-    compileSdk = 31
-
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 31
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    sourceSets {
-        named("main") {
-            manifest.srcFile("AndroidManifest.xml")
         }
     }
 }
@@ -92,9 +68,10 @@ publishing {
     }
     publications.withType<MavenPublication> {
         artifact(javadocJar.get())
+        artifactId = project.name
         pom {
-            name.set("cokoin")
-            description.set("")
+            name.set(project.name)
+            description.set("Dependency Injection library for Compose Multiplatform, Koin wrapper.")
             url.set("https://github.com/burnoo/cokoin")
 
             licenses {
