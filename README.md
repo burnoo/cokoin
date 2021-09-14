@@ -11,6 +11,7 @@ dependencies {
     implementation("dev.burnoo:cokoin:0.1.2")
 }
 ```
+So far only works with Compose Multiplatform (not Jetpack Compose).
 
 ## Usage
 The library is using Koin's Application and Modules. The Koin documentation can be found here: https://insert-koin.io/.
