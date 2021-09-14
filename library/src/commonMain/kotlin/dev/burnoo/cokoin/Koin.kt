@@ -1,0 +1,27 @@
+package dev.burnoo.cokoin
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+import org.koin.core.Koin
+import org.koin.dsl.KoinAppDeclaration
+import org.koin.dsl.koinApplication
+
+@PublishedApi
+internal val LocalKoin = compositionLocalOf<Koin> {
+    error("Koin is not initialized, make sure that your composable is inside Koin Composable")
+}
+
+@Composable
+fun Koin(
+    appDeclaration: KoinAppDeclaration? = null,
+    content: @Composable () -> Unit
+) {
+    val koinApplication = koinApplication(appDeclaration)
+    CompositionLocalProvider(LocalKoin provides koinApplication.koin) {
+        content()
+    }
+}
+
+@Composable
+fun getKoin(): Koin = LocalKoin.current

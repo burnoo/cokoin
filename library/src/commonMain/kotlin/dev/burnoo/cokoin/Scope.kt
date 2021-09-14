@@ -1,0 +1,28 @@
+package dev.burnoo.cokoin
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.remember
+import org.koin.core.Koin
+import org.koin.core.scope.Scope
+
+@PublishedApi
+internal val LocalScope = compositionLocalOf<Scope?> { null }
+
+@Composable
+fun KoinScope(
+    getScope: Koin.() -> Scope,
+    content: @Composable () -> Unit
+) {
+    val koin = getKoin()
+    val scope = remember {
+        koin.getScope()
+    }
+    CompositionLocalProvider(LocalScope provides scope) {
+        content()
+    }
+}
+
+@Composable
+fun getScope() = LocalScope.current
