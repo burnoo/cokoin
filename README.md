@@ -9,10 +9,10 @@ Library is hosted on Maven Central. Add following the package to your module `bu
 ```kotlin
 dependencies {
     // for JetBrains' Compose Multiplatform
-    implementation("dev.burnoo:cokoin:0.1.4")
+    implementation("dev.burnoo:cokoin:0.1.5")
 
     // for Google's Jetpack Compose
-    implementation("dev.burnoo:cokoin-jetpack:0.1.4")
+    implementation("dev.burnoo:cokoin-jetpack:0.1.5")
     
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
@@ -61,6 +61,49 @@ fun Test() {
                 Text(get<A>().value)
             }
         }
+    }
+}
+```
+Android ViewModel (`getViewModel`, `getStateViewModel`):
+```kotlin
+class MainViewModel : ViewModel() {
+    val data = "Hello, DI!"
+}
+
+private val viewModelModule = module {
+    viewModel { MainViewModel() }
+}
+
+@Composable
+fun ViewModelSample() {
+    Koin(appDeclaration = { modules(viewModelModule) }) {
+        val viewModel = getViewModel<MainViewModel>()
+        Text(viewModel.data)
+    }
+}
+```
+Android Compose Navigation (`getNavViewModel`, `getNavController`):
+```kotlin
+@Composable
+fun Sample() {
+    val navController = rememberNavController()
+    Koin(appDeclaration = { modules(viewModelModule) }) {
+        KoinNavigation(navController) {
+            NavHost(navController, startDestination = "1") {
+                composable("1") {
+                    Screen1()
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Screen1() {
+    val navController = getNavController()
+    Button(onClick = { navController.navigate("2") }) {
+        val navViewModel = getNavViewModel<MainViewModel>()
+        //...
     }
 }
 ```
