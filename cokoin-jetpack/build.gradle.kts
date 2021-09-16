@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
+    id("maven-publish")
+    id("sonatype-publish")
 }
 
 android {
@@ -9,8 +10,6 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 30
-        versionCode = 1
-        versionName = "1.0"
     }
 
     compileOptions {
@@ -27,6 +26,11 @@ android {
     }
 }
 
+dependencies {
+    api("io.insert-koin:koin-core:3.1.2")
+    api("androidx.compose.runtime:runtime:1.0.2")
+}
+
 tasks.register<Copy>("copyCokoinForJetpack") {
     from(layout.projectDirectory.dir("../cokoin/src/commonMain/kotlin"))
     into(layout.projectDirectory.dir("src/main/java"))
@@ -34,7 +38,19 @@ tasks.register<Copy>("copyCokoinForJetpack") {
 
 tasks.named("preBuild") { dependsOn("copyCokoinForJetpack") }
 
-dependencies {
-    api("io.insert-koin:koin-core:3.1.2")
-    api("androidx.compose.runtime:runtime:1.0.2")
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(android.sourceSets.named("main").get().java.srcDirs)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components.named("release").get())
+                artifact(sourcesJar.get())
+                artifactId = project.name
+            }
+        }
+    }
 }

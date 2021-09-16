@@ -1,5 +1,4 @@
 buildscript {
-    val kotlin_version by extra("1.5.21")
     repositories {
         google()
         mavenCentral()
@@ -12,6 +11,13 @@ buildscript {
         classpath("com.android.tools.build:gradle:4.2.2")
         classpath(kotlin("gradle-plugin", version = "1.5.21"))
     }
+}
+
+tasks.register("publishCokoinToSonatype") {
+    dependsOn(
+        ":cokoin:publishAllPublicationsToSonatypeRepository",
+        ":cokoin-jetpack:publishAllPublicationsToSonatypeRepository"
+    )
 }
 
 allprojects {

@@ -8,7 +8,7 @@ It uses `@Composable` functions to configure `KoinContext` and `Scopes`.
 Library is hosted on Maven Central. Add following the package to your module `build.gradle.kts`:
 ```kotlin
 dependencies {
-    implementation("dev.burnoo:cokoin:0.1.2")
+    implementation("dev.burnoo:cokoin:0.1.3")
 }
 ```
 So far only works with Compose Multiplatform (not Jetpack Compose).
