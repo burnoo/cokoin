@@ -1,7 +1,7 @@
 # 🥥 Cokoin
 [![Maven Central](https://img.shields.io/maven-central/v/dev.burnoo/cokoin)](https://search.maven.org/search?q=dev.burnoo.cokoin)
 
-Dependency Injection library for Compose Multiplatform, Koin wrapper.
+Injection library for Compose (Multiplatform and Jetpack), Koin wrapper.
 It uses `@Composable` functions to configure `KoinContext` and `Scopes`.
 
 ## Installation
