@@ -1,2 +1,2 @@
 include(":cokoin", ":androidSample", ":desktopSample")
-include(":cokoin-jetpack")
+include(":cokoin-jetpack", ":jetpackSample")
