@@ -8,10 +8,15 @@ It uses `@Composable` functions to configure `KoinContext` and `Scopes`.
 Library is hosted on Maven Central. Add following the package to your module `build.gradle.kts`:
 ```kotlin
 dependencies {
+    // for JetBrains' Compose Multiplatform
     implementation("dev.burnoo:cokoin:0.1.4")
+
+    // for Google's Jetpack Compose
+    implementation("dev.burnoo:cokoin-jetpack:0.1.4")
+    
+    // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
 ```
-So far only works with Compose Multiplatform (not Jetpack Compose).
 
 ## Usage
 The library is using Koin's Application and Modules. The Koin documentation can be found here: https://insert-koin.io/.
