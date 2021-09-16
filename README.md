@@ -88,7 +88,7 @@ Android Compose Navigation (`getNavViewModel`, `getNavController`):
 fun Sample() {
     val navController = rememberNavController()
     Koin(appDeclaration = { modules(viewModelModule) }) {
-        KoinNavigation(navController) {
+        KoinNav(navController) {
             NavHost(navController, startDestination = "1") {
                 composable("1") {
                     Screen1()
