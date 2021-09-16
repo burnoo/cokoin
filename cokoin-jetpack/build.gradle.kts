@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
     }
 
     compileOptions {
@@ -29,11 +29,17 @@ android {
 
 dependencies {
     api("io.insert-koin:koin-core:3.1.2")
+    api("io.insert-koin:koin-android:3.1.2")
     api("androidx.compose.runtime:runtime:1.0.2")
+    api("androidx.navigation:navigation-compose:2.4.0-alpha09")
+    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-beta01")
 }
 
 tasks.register<Copy>("copyCokoinForJetpack") {
-    from(layout.projectDirectory.dir("../cokoin/src/commonMain/kotlin"))
+    from(
+        layout.projectDirectory.dir("../cokoin/src/commonMain/kotlin"),
+        layout.projectDirectory.dir("../cokoin/src/androidMain/kotlin")
+    )
     into(layout.projectDirectory.dir("src/main/java"))
 }
 
