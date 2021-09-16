@@ -27,6 +27,12 @@ android {
     }
 }
 
+kotlin {
+    sourceSets.all {
+        languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
+    }
+}
+
 dependencies {
     api("io.insert-koin:koin-core:3.1.2")
     api("io.insert-koin:koin-android:3.1.2")
