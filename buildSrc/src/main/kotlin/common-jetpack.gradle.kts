@@ -19,3 +19,9 @@ dependencies {
     androidTestImplementation(Deps.testCore)
     androidTestImplementation(Deps.JetpackCompose.material)
 }
+
+configurations.all {
+    resolutionStrategy {
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-debug")
+    }
+}
