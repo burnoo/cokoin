@@ -15,7 +15,7 @@ kotlin {
         named("commonMain") {
             dependencies {
                 api(compose.runtime)
-                api("io.insert-koin:koin-core:3.1.2")
+                api(Deps.Koin.core)
             }
         }
     }

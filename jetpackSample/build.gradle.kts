@@ -22,8 +22,8 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.2"
-        kotlinCompilerVersion = "1.5.21"
+        kotlinCompilerExtensionVersion = Versions.jetpackCompose
+        kotlinCompilerVersion = Versions.kotlin
     }
 }
 

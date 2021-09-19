@@ -24,8 +24,8 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.2"
-        kotlinCompilerVersion = "1.5.21"
+        kotlinCompilerExtensionVersion = Versions.jetpackCompose
+        kotlinCompilerVersion = Versions.kotlin
     }
     packagingOptions {
         exclude("META-INF/DEPENDENCIES")
@@ -47,18 +47,16 @@ kotlin.sourceSets.all {
 }
 
 dependencies {
-    val composeVersion = "1.0.2"
+    api(Deps.Koin.core)
+    api(Deps.Koin.android)
+    api(Deps.JetpackCompose.runtime)
+    api(Deps.JetpackCompose.viewModel)
+    api(Deps.JetpackCompose.navigation)
 
-    api("io.insert-koin:koin-core:3.1.2")
-    api("io.insert-koin:koin-android:3.1.2")
-    api("androidx.compose.runtime:runtime:$composeVersion")
-    api("androidx.navigation:navigation-compose:2.4.0-alpha09")
-    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-beta01")
-
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
-    androidTestImplementation("androidx.compose.material:material:$composeVersion")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
-    androidTestImplementation("androidx.test:core:1.4.0")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:${Versions.jetpackCompose}")
+    androidTestImplementation("androidx.compose.material:material:${Versions.jetpackCompose}")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.jetpackCompose}")
+    androidTestImplementation("androidx.test:core:${Versions.testCore}")
 }
 
 tasks.register<Copy>("copyCokoinForJetpack") {

@@ -24,7 +24,7 @@ kotlin.sourceSets.all {
 
 dependencies {
     api(compose.runtime)
-    api("io.insert-koin:koin-android:3.1.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-beta01")
+    api(Deps.Koin.android)
+    implementation(Deps.JetpackCompose.navigation)
     implementation(project(":cokoin"))
 }
