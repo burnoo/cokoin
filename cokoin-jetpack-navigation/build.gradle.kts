@@ -9,10 +9,3 @@ dependencies {
     api(Deps.Koin.android)
     api(Deps.JetpackCompose.navigation)
 }
-
-tasks.register<Copy>("copyCokoinForJetpack") {
-    from(layout.projectDirectory.dir("../cokoin-android-navigation/src/main"))
-    into(layout.projectDirectory.dir("src/main"))
-}
-
-tasks.named("preBuild") { dependsOn("copyCokoinForJetpack") }

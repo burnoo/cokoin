@@ -4,13 +4,6 @@ plugins {
 }
 
 dependencies {
-    api(Deps.Koin.core)
     api(Deps.JetpackCompose.runtime)
+    api(Deps.Koin.core)
 }
-
-tasks.register<Copy>("copyCokoinForJetpack") {
-    from(layout.projectDirectory.dir("../cokoin/src/commonMain/kotlin"))
-    into(layout.projectDirectory.dir("src/main/java"))
-}
-
-tasks.named("preBuild") { dependsOn("copyCokoinForJetpack") }

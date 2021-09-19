@@ -9,10 +9,3 @@ dependencies {
     api(Deps.Koin.android)
     implementation(Deps.JetpackCompose.viewModel)
 }
-
-tasks.register<Copy>("copyCokoinForJetpack") {
-    from(layout.projectDirectory.dir("../cokoin-android-viewmodel/src/main"))
-    into(layout.projectDirectory.dir("src/main"))
-}
-
-tasks.named("preBuild") { dependsOn("copyCokoinForJetpack") }
