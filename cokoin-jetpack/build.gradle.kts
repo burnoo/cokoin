@@ -1,6 +1,4 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
     id("common-android-library")
     id("common-jetpack")
 }

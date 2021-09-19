@@ -1,8 +1,4 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    id("maven-publish")
-    id("sonatype-publish")
     id("common-android-library")
     id("common-jetpack")
 }
