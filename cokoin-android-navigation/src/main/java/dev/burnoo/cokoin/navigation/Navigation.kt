@@ -1,4 +1,4 @@
-package dev.burnoo.cokoin
+package dev.burnoo.cokoin.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import dev.burnoo.cokoin.getScope
 import org.koin.androidx.viewmodel.ViewModelOwner
 import org.koin.androidx.viewmodel.scope.BundleDefinition
 import org.koin.androidx.viewmodel.scope.emptyState

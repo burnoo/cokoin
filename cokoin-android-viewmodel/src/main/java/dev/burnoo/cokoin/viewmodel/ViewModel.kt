@@ -1,10 +1,11 @@
-package dev.burnoo.cokoin
+package dev.burnoo.cokoin.viewmodel
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalSavedStateRegistryOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
+import dev.burnoo.cokoin.getScope
 import org.koin.androidx.viewmodel.ViewModelOwner
 import org.koin.androidx.viewmodel.scope.BundleDefinition
 import org.koin.androidx.viewmodel.scope.emptyState

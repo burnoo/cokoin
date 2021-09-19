@@ -10,7 +10,7 @@ android {
         minSdk = 21
         targetSdk = 31
         versionCode = 1
-        versionName = "0.1,2"
+        versionName = "1.0"
     }
 
     compileOptions {

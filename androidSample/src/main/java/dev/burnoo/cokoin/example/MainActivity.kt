@@ -10,7 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.burnoo.cokoin.*
+import dev.burnoo.cokoin.Koin
+import dev.burnoo.cokoin.navigation.KoinNavHost
+import dev.burnoo.cokoin.navigation.getNavViewModel
+import dev.burnoo.cokoin.viewmodel.getViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import kotlin.random.Random
@@ -41,7 +44,6 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun App() {
-    val navController = rememberNavController()
     Koin(appDeclaration = { modules(appModule) }) {
         Column {
             ViewModelSample()
