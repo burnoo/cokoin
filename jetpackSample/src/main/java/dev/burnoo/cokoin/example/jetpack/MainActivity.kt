@@ -8,11 +8,12 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.burnoo.cokoin.*
+import dev.burnoo.cokoin.navigation.KoinNavHost
+import dev.burnoo.cokoin.navigation.getNavViewModel
+import dev.burnoo.cokoin.viewmodel.getViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import kotlin.random.Random

@@ -1,4 +1,4 @@
-package dev.burnoo.cokoin
+package dev.burnoo.cokoin.navigation
 
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -7,7 +7,8 @@ import androidx.compose.ui.test.performClick
 import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.burnoo.cokoin.utils.BaseTest
+import dev.burnoo.cokoin.Koin
+import dev.burnoo.cokoin.navigation.utils.BaseTest
 import org.junit.Test
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.koinApplication

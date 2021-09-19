@@ -49,8 +49,10 @@ kotlin.sourceSets.all {
 }
 
 dependencies {
-    api(Deps.Koin.core)
+    api(project(":cokoin-jetpack"))
     api(Deps.JetpackCompose.runtime)
+    api(Deps.Koin.android)
+    implementation(Deps.JetpackCompose.viewModel)
 
     debugImplementation(Deps.JetpackCompose.uiTestManifest)
     androidTestImplementation(Deps.JetpackCompose.uiTestJUnit)
@@ -59,8 +61,8 @@ dependencies {
 }
 
 tasks.register<Copy>("copyCokoinForJetpack") {
-    from(layout.projectDirectory.dir("../cokoin/src/commonMain/kotlin"))
-    into(layout.projectDirectory.dir("src/main/java"))
+    from(layout.projectDirectory.dir("../cokoin-android-viewmodel/src/main"))
+    into(layout.projectDirectory.dir("src/main"))
 }
 
 tasks.named("preBuild") { dependsOn("copyCokoinForJetpack") }

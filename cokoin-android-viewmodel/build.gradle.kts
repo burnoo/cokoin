@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     kotlin("android")
     id("org.jetbrains.compose")
+    id("maven-publish")
+    id("sonatype-publish")
 }
 
 android {
@@ -23,8 +25,25 @@ kotlin.sourceSets.all {
 }
 
 dependencies {
+    api(project(":cokoin"))
     api(compose.runtime)
     api(Deps.Koin.android)
-    implementation(Deps.JetpackCompose.navigation)
-    implementation(project(":cokoin"))
+    implementation(Deps.JetpackCompose.viewModel)
+}
+
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(android.sourceSets.named("main").get().java.srcDirs)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components.named("release").get())
+                artifact(sourcesJar.get())
+                artifactId = project.name
+            }
+        }
+    }
 }

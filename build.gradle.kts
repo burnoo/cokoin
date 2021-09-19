@@ -13,13 +13,6 @@ buildscript {
     }
 }
 
-tasks.register("publishCokoinToSonatype") {
-    dependsOn(
-        ":cokoin:publishAllPublicationsToSonatypeRepository",
-        ":cokoin-jetpack:publishAllPublicationsToSonatypeRepository"
-    )
-}
-
 allprojects {
     repositories {
         google()

@@ -21,11 +21,16 @@ object Deps {
 
     object JetpackCompose {
         const val runtime = "androidx.compose.runtime:runtime:${Versions.jetpackCompose}"
+        const val material = "androidx.compose.material:material:${Versions.jetpackCompose}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.jetpackComposeViewModel}"
         const val navigation = "androidx.navigation:navigation-compose:${Versions.jetpackComposeNavigation}"
+        const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.jetpackCompose}"
+        const val uiTestJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.jetpackCompose}"
     }
 
     object JetbrainsCompose {
         const val gradlePlugin = "org.jetbrains.compose:compose-gradle-plugin:${Versions.jetbrainsCompose}"
     }
+
+    const val testCore = "androidx.test:core:${Versions.testCore}"
 }

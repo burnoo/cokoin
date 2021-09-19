@@ -1,9 +1,10 @@
-package dev.burnoo.cokoin
+package dev.burnoo.cokoin.viewmodel
 
 import androidx.compose.material.Text
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import dev.burnoo.cokoin.utils.BaseTest
+import dev.burnoo.cokoin.Koin
+import dev.burnoo.cokoin.viewmodel.utils.BaseTest
 import org.junit.Test
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.parameter.parametersOf

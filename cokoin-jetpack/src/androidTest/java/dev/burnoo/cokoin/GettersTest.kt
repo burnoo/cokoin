@@ -10,21 +10,6 @@ import org.koin.dsl.module
 class GettersTest : BaseTest() {
 
     @Test
-    fun useGetKoinComponent() {
-        val module = module {
-            factory { "text" }
-        }
-
-        composeTestRule.setContent {
-            Koin(appDeclaration = { modules(module) }) {
-                val text = getKoinComponent().get<String>()
-                Text(text)
-            }
-        }
-        assertText("text")
-    }
-
-    @Test
     fun useGetKoin() {
         val module = module {
             factory { "text" }
