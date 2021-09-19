@@ -5,7 +5,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import org.koin.core.Koin
-import org.koin.core.annotation.KoinInternalApi
 import org.koin.core.scope.Scope
 
 @PublishedApi
@@ -18,9 +17,12 @@ fun KoinScope(
     getScope: Koin.() -> Scope,
     content: @Composable () -> Unit
 ) {
+    val currentScope = runCatching { LocalScope.current }.getOrNull()
     val koin = getKoin()
     val scope = remember {
-        koin.getScope()
+        koin.getScope().also {
+            if (currentScope != null) it.linkTo(currentScope)
+        }
     }
     CompositionLocalProvider(LocalScope provides scope) {
         content()

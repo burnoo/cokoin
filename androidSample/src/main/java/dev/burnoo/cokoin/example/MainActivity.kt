@@ -8,14 +8,9 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.burnoo.cokoin.Koin
-import dev.burnoo.cokoin.KoinNav
-import dev.burnoo.cokoin.getNavViewModel
-import dev.burnoo.cokoin.getViewModel
+import dev.burnoo.cokoin.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import kotlin.random.Random
@@ -50,7 +45,7 @@ fun App() {
     Koin(appDeclaration = { modules(appModule) }) {
         Column {
             ViewModelSample()
-            NavigationSample(navController)
+            NavigationSample()
         }
     }
 }
@@ -62,20 +57,19 @@ fun ViewModelSample() {
 }
 
 @Composable
-fun NavigationSample(navController: NavHostController) {
-    KoinNav(navController) {
-        NavHost(navController, startDestination = "1") {
-            composable("1") {
-                Button(onClick = { navController.navigate("2") }) {
-                    val navViewModel = getNavViewModel<NavViewModel>()
-                    Text("Navigate to 2; viewModel id: ${navViewModel.id}")
-                }
+fun NavigationSample() {
+    val navController = rememberNavController()
+    KoinNavHost(navController, startDestination = "1") {
+        composable("1") {
+            Button(onClick = { navController.navigate("2") }) {
+                val navViewModel = getNavViewModel<NavViewModel>()
+                Text("Navigate to 2; viewModel id: ${navViewModel.id}")
             }
-            composable("2") {
-                Button(onClick = { navController.navigate("1") }) {
-                    val navViewModel = getNavViewModel<NavViewModel>()
-                    Text("Navigate to 1; viewModel id: ${navViewModel.id}")
-                }
+        }
+        composable("2") {
+            Button(onClick = { navController.navigate("1") }) {
+                val navViewModel = getNavViewModel<NavViewModel>()
+                Text("Navigate to 1; viewModel id: ${navViewModel.id}")
             }
         }
     }

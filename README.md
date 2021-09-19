@@ -1,11 +1,14 @@
 # 🥥 Cokoin
+
 [![Maven Central](https://img.shields.io/maven-central/v/dev.burnoo/cokoin)](https://search.maven.org/search?q=dev.burnoo.cokoin)
 
-Injection library for Compose (Multiplatform and Jetpack), Koin wrapper.
-It uses `@Composable` functions to configure `KoinContext` and `Scopes`.
+Injection library for Compose (Multiplatform and Jetpack), Koin wrapper. It uses `@Composable`
+functions to configure `KoinContext` and `Scopes`.
 
 ## Installation
+
 Library is hosted on Maven Central. Add following the package to your module `build.gradle.kts`:
+
 ```kotlin
 dependencies {
     // for JetBrains' Compose Multiplatform
@@ -13,15 +16,18 @@ dependencies {
 
     // for Google's Jetpack Compose
     implementation("dev.burnoo:cokoin-jetpack:0.1.5")
-    
+
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
 ```
 
 ## Usage
-The library is using Koin's Application and Modules. The Koin documentation can be found here: https://insert-koin.io/.
+
+The library is using Koin's Application and Modules. The Koin documentation can be found
+here: https://insert-koin.io/.
 
 The library itself contains `@Composable` functions, which helps with Koin configuration:
+
 ```kotlin
 val appModule = module {
     factory { "Hello, DI!" }
@@ -36,7 +42,9 @@ fun App() {
     }
 }
 ```
+
 Scopes are also supported:
+
 ```kotlin
 data class A(val value: String)
 
@@ -64,7 +72,9 @@ fun Test() {
     }
 }
 ```
-Android ViewModel (`getViewModel`, `getStateViewModel`):
+
+Android ViewModel (`getViewModel`):
+
 ```kotlin
 class MainViewModel : ViewModel() {
     val data = "Hello, DI!"
@@ -82,17 +92,17 @@ fun ViewModelSample() {
     }
 }
 ```
+
 Android Compose Navigation (`getNavViewModel`, `getNavController`):
+
 ```kotlin
 @Composable
 fun Sample() {
     val navController = rememberNavController()
     Koin(appDeclaration = { modules(viewModelModule) }) {
-        KoinNav(navController) {
-            NavHost(navController, startDestination = "1") {
-                composable("1") {
-                    Screen1()
-                }
+        KoinNavHost(navController, startDestination = "1") {
+            composable("1") {
+                Screen1()
             }
         }
     }
@@ -107,7 +117,9 @@ fun Screen1() {
     }
 }
 ```
+
 ## License
+
 ```
 Copyright 2021 Bruno Wieczorek
 
