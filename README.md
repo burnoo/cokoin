@@ -3,19 +3,23 @@
 [![Maven Central](https://img.shields.io/maven-central/v/dev.burnoo/cokoin)](https://search.maven.org/search?q=dev.burnoo.cokoin)
 
 Injection library for Compose (Multiplatform and Jetpack), Koin wrapper. It uses `@Composable`
-functions to configure `KoinContext` and `Scopes`.
+functions to configure `KoinContext`.
 
 ## Installation
 
-Library is hosted on Maven Central. Add following the package to your module `build.gradle.kts`:
+Library is hosted on Maven Central. Add following the packages to your module `build.gradle.kts`:
 
 ```kotlin
 dependencies {
     // for JetBrains' Compose Multiplatform
-    implementation("dev.burnoo:cokoin:0.1.5")
+    implementation("dev.burnoo:cokoin:0.1.6")
+    implementation("dev.burnoo:cokoin-android-viewmodel:0.1.6") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-android-navigation:0.1.6") // for Compose Navigation
 
     // for Google's Jetpack Compose
-    implementation("dev.burnoo:cokoin-jetpack:0.1.5")
+    implementation("dev.burnoo:cokoin-jetpack:0.1.6")
+    implementation("dev.burnoo:cokoin-jetpack-viewmodel:0.1.6") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-jetpack-navigation:0.1.6") // for Compose Navigation
 
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
@@ -23,10 +27,9 @@ dependencies {
 
 ## Usage
 
-The library is using Koin's Application and Modules. The Koin documentation can be found
-here: https://insert-koin.io/.
+The library is using Koin's Application and Modules. The Koin documentation can be found here: https://insert-koin.io/.
 
-The library itself contains `@Composable` functions, which helps with Koin configuration:
+The core library contains [`@Composable Koin`](cokoin/src/commonMain/kotlin/dev/burnoo/cokoin/Koin.kt) function, which is used to configure Koin application. It can be used with `@Preview`.
 
 ```kotlin
 val appModule = module {
@@ -43,7 +46,9 @@ fun App() {
 }
 ```
 
-Scopes are also supported:
+### Scopes
+
+Scopes are created by wrapping composables in [`@Composable KoinScope`](cokoin/src/commonMain/kotlin/dev/burnoo/cokoin/Scope.kt):
 
 ```kotlin
 data class A(val value: String)
@@ -73,7 +78,14 @@ fun Test() {
 }
 ```
 
-Android ViewModel (`getViewModel`):
+### ViewModel
+
+Dependencies:
+
+- `dev.burnoo:cokoin-android-viewmodel:x.y.z` (Multiplatform)
+- `dev.burnoo:cokoin-jetpack-viewmodel:x.y.z` (Jetpack)
+
+Call `getViewModel` to obtain `ViewModel` inside `@Composable`:
 
 ```kotlin
 class MainViewModel : ViewModel() {
@@ -93,7 +105,19 @@ fun ViewModelSample() {
 }
 ```
 
-Android Compose Navigation (`getNavViewModel`, `getNavController`):
+`getViewModel`
+supports [Koin's injection parameters](https://insert-koin.io/docs/reference/koin-android/viewmodel/#viewmodel-and-injection-parameters)
+and `SaveStateHandle`. Advanced examples can be
+found [here](cokoin-jetpack-viewmodel/src/androidTest/java/dev/burnoo/cokoin/viewmodel/ViewModelTest.kt).
+
+### Compose Navigation
+
+Dependencies:
+
+- `dev.burnoo:cokoin-android-navigation:x.y.z` (Multiplatform)
+- `dev.burnoo:cokoin-jetpack-navigation:x.y.z` (Jetpack)
+
+First replace `NavHost` with `KoinNavHost`:
 
 ```kotlin
 @Composable
@@ -107,7 +131,11 @@ fun Sample() {
         }
     }
 }
+```
 
+Then use `getNavController` and `getNavViewModel` inside `composable` screen.
+
+```kotlin
 @Composable
 fun Screen1() {
     val navController = getNavController()
