@@ -7,19 +7,19 @@ functions to configure `KoinContext`.
 
 ## Installation
 
-Library is hosted on Maven Central. Add following the packages to your module `build.gradle.kts`:
+Library is hosted on Maven Central. Add following the packages to your module `build.gradle.kts` or `build.gradle`:
 
 ```kotlin
 dependencies {
     // for JetBrains' Compose Multiplatform
-    implementation("dev.burnoo:cokoin:0.1.8")
-    implementation("dev.burnoo:cokoin-android-viewmodel:0.1.8") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-android-navigation:0.1.8") // for Compose Navigation
+    implementation("dev.burnoo:cokoin:0.1.9")
+    implementation("dev.burnoo:cokoin-android-viewmodel:0.1.9") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-android-navigation:0.1.9") // for Compose Navigation
 
     // for Google's Jetpack Compose
-    implementation("dev.burnoo:cokoin-jetpack:0.1.8")
-    implementation("dev.burnoo:cokoin-jetpack-viewmodel:0.1.8") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-jetpack-navigation:0.1.8") // for Compose Navigation
+    implementation("dev.burnoo:cokoin-jetpack:0.1.9")
+    implementation("dev.burnoo:cokoin-jetpack-viewmodel:0.1.9") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-jetpack-navigation:0.1.9") // for Compose Navigation
 
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
