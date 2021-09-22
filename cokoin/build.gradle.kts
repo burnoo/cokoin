@@ -18,6 +18,8 @@ kotlin {
                 api(Deps.Koin.core)
             }
         }
+        named("jvmMain")
+        named("jsMain")
     }
 
     sourceSets.all {

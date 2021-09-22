@@ -6,4 +6,6 @@ plugins {
 dependencies {
     api(Deps.JetpackCompose.runtime)
     api(Deps.Koin.core)
+
+    androidTestImplementation(Deps.Koin.junit4)
 }

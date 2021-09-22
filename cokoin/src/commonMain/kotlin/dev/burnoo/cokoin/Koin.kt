@@ -10,9 +10,7 @@ import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.koinApplication
 
 @PublishedApi
-internal val LocalKoin = compositionLocalOf<Koin> {
-    error("Koin is not initialized, make sure that your composable is inside Koin Composable")
-}
+internal val LocalKoin = compositionLocalOf { getGlobalKoin() }
 
 @OptIn(KoinInternalApi::class)
 @Composable

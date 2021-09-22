@@ -5,11 +5,13 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import org.koin.core.Koin
+import org.koin.core.annotation.KoinInternalApi
 import org.koin.core.scope.Scope
 
+@OptIn(KoinInternalApi::class)
 @PublishedApi
-internal val LocalScope = compositionLocalOf<Scope> {
-    error("Koin is not initialized, make sure that your composable is inside Koin Composable")
+internal val LocalScope = compositionLocalOf {
+    getGlobalKoin().scopeRegistry.rootScope
 }
 
 @Composable

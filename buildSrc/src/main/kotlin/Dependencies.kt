@@ -17,6 +17,7 @@ object Deps {
     object Koin {
         const val core = "io.insert-koin:koin-core:${Versions.koin}"
         const val android = "io.insert-koin:koin-android:${Versions.koin}"
+        const val junit4 = "io.insert-koin:koin-test-junit4:${Versions.koin}"
     }
 
     object JetpackCompose {

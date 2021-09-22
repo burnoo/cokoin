@@ -32,7 +32,9 @@ val pathMap = mapOf(
     "cokoin-jetpack-navigation" to "../cokoin-android-navigation/src/main/java",
 )
 tasks.register<Copy>("copyCokoinForJetpack") {
-    from(layout.projectDirectory.dir(pathMap.getValue(project.name)))
+    from(layout.projectDirectory.dir(pathMap.getValue(project.name))) {
+        exclude("**/*Multiplatform*")
+    }
     into(layout.projectDirectory.dir("src/main/java"))
 }
 tasks.named("preBuild") { dependsOn("copyCokoinForJetpack") }
