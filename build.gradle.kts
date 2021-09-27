@@ -1,3 +1,7 @@
+plugins {
+    id("org.jetbrains.dokka") version Versions.dokka
+}
+
 buildscript {
     repositories {
         google()
@@ -18,5 +22,11 @@ allprojects {
         google()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        // Needed for dokka
+        maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
+    }
+
+    if (!displayName.contains("example")) {
+        plugins.apply("org.jetbrains.dokka")
     }
 }

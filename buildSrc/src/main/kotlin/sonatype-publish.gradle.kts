@@ -1,5 +1,5 @@
-import java.util.Properties
 import java.io.FileInputStream
+import java.util.*
 
 plugins {
     id("maven-publish")
@@ -35,6 +35,8 @@ ext {
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
+    dependsOn("dokkaHtml")
+    from("$buildDir/dokka/html")
 }
 
 afterEvaluate {

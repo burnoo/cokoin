@@ -12,6 +12,12 @@ import org.koin.dsl.koinApplication
 @PublishedApi
 internal val LocalKoin = compositionLocalOf { getGlobalKoin() }
 
+/**
+ * Composable wrapper for [Koin].
+ *
+ * @param koinApplication definition of [KoinApplication] to be used within content
+ * @param content Composable content, injection works within it
+ */
 @OptIn(KoinInternalApi::class)
 @Composable
 fun Koin(
@@ -26,6 +32,12 @@ fun Koin(
     }
 }
 
+/**
+ * Composable wrapper for [Koin].
+ *
+ * @param appDeclaration [KoinAppDeclaration] used to create Koin Application
+ * @param content Composable content, injection works within it
+ */
 @Composable
 fun Koin(
     appDeclaration: KoinAppDeclaration? = null,
@@ -36,5 +48,8 @@ fun Koin(
     }
 }
 
+/**
+ * Gets current [Koin] instance from the closest parent [dev.burnoo.cokoin.Koin].
+ */
 @Composable
 fun getKoin(): Koin = LocalKoin.current

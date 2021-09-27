@@ -14,16 +14,23 @@ internal val LocalScope = compositionLocalOf {
     getGlobalKoin().scopeRegistry.rootScope
 }
 
+/**
+ * Composable wrapper for [Scope].
+ * Nesting this function adds parent scope with [Scope.linkTo]
+ *
+ * @param getScope function to get or create [Scope] using current [Koin] as receiver
+ * @param content Composable content, [Scope] is set within it
+ */
 @Composable
 fun KoinScope(
     getScope: Koin.() -> Scope,
     content: @Composable () -> Unit
 ) {
-    val currentScope = runCatching { LocalScope.current }.getOrNull()
+    val currentScope = LocalScope.current
     val koin = getKoin()
     val scope = remember {
         koin.getScope().also {
-            if (currentScope != null) it.linkTo(currentScope)
+            it.linkTo(currentScope)
         }
     }
     CompositionLocalProvider(LocalScope provides scope) {
@@ -31,5 +38,8 @@ fun KoinScope(
     }
 }
 
+/**
+ * Gets current [Scope] from the closest parent [dev.burnoo.cokoin.KoinScope]
+ */
 @Composable
 fun getScope() = LocalScope.current
