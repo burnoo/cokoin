@@ -1,6 +1,7 @@
 # 🥥 Cokoin
 
 [![Maven Central](https://img.shields.io/maven-central/v/dev.burnoo/cokoin)](https://search.maven.org/search?q=dev.burnoo.cokoin)
+[![javadoc](https://javadoc.io/badge2/dev.burnoo/cokoin/javadoc.svg?label=dokka&logo=)](https://javadoc.io/doc/dev.burnoo/cokoin)
 
 Injection library for Compose (Multiplatform and Jetpack), Koin wrapper. It uses `@Composable`
 functions to configure `KoinContext`.
