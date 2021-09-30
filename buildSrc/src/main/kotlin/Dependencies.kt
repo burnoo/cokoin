@@ -1,9 +1,9 @@
 object Versions {
-    const val kotlin = "1.5.21"
+    const val kotlin = "1.5.30"
     const val androidGradlePlugin = "4.2.2"
     const val koin = "3.1.2"
-    const val jetbrainsCompose = "1.0.0-alpha3"
-    const val jetpackCompose = "1.0.2"
+    const val jetbrainsCompose = "1.0.0-alpha4-build366"
+    const val jetpackCompose = "1.0.3"
     const val jetpackComposeViewModel = "2.4.0-beta01"
     const val jetpackComposeNavigation = "2.4.0-alpha09"
     const val testCore = "1.4.0"

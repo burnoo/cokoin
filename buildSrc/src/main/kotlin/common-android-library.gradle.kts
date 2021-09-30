@@ -22,7 +22,7 @@ android {
 }
 
 kotlin.sourceSets.all {
-    languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
+    languageSettings.optIn("kotlin.RequiresOptIn")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
