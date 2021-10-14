@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.burnoo.cokoin.*
+import dev.burnoo.cokoin.Koin
 import dev.burnoo.cokoin.navigation.KoinNavHost
 import dev.burnoo.cokoin.navigation.getNavViewModel
 import dev.burnoo.cokoin.viewmodel.getViewModel

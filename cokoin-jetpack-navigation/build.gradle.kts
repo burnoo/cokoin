@@ -8,4 +8,6 @@ dependencies {
     api(Deps.JetpackCompose.runtime)
     api(Deps.Koin.android)
     api(Deps.JetpackCompose.navigation)
+
+    implementation(project(":cokoin-jetpack-viewmodel"))
 }

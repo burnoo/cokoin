@@ -3,23 +3,20 @@ package dev.burnoo.cokoin.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalSavedStateRegistryOwner
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import dev.burnoo.cokoin.getScope
-import org.koin.androidx.viewmodel.ViewModelOwner
+import dev.burnoo.cokoin.viewmodel.getViewModel
 import org.koin.androidx.viewmodel.scope.BundleDefinition
 import org.koin.androidx.viewmodel.scope.emptyState
-import org.koin.androidx.viewmodel.scope.getViewModel
 import org.koin.core.parameter.ParametersDefinition
 import org.koin.core.qualifier.Qualifier
-import org.koin.core.scope.Scope
 
 @PublishedApi
 internal val LocalNavController = compositionLocalOf<NavHostController> {
@@ -29,7 +26,7 @@ internal val LocalNavController = compositionLocalOf<NavHostController> {
 /**
  * Composable wrapper to store [NavHostController].
  * Should be used to wrap [NavHost].
- * [getNavViewModel] works in Composable content.
+ * [getNavViewModel] and [getNavController] works in the Composable content.
  *
  * @param navController [NavHostController]
  * @param content container for [NavHost]
@@ -76,8 +73,7 @@ fun KoinNavHost(
 }
 
 /**
- * Gets [ViewModel] from Koin using [LocalSavedStateRegistryOwner].
- * Uses [Scope.getViewModel].
+ * Gets [ViewModel] from Koin using root [NavBackStackEntry] as [ViewModelStoreOwner].
  * Needs to be called inside [KoinNav] or [KoinNavHost].
  *
  * @param T ViewModel type
@@ -92,18 +88,12 @@ inline fun <reified T : ViewModel> getNavViewModel(
     noinline parameters: ParametersDefinition? = null,
 ): T {
     val navController = getNavController()
-    val savedStateRegistryOwner = LocalSavedStateRegistryOwner.current
-    val scope = getScope()
-    return remember(qualifier, parameters) {
-        val navBackStackRootEntry = navController.backQueue.first()
-        scope.getViewModel(
-            qualifier = qualifier,
-            state = state,
-            owner = { ViewModelOwner.from(navBackStackRootEntry, savedStateRegistryOwner) },
-            clazz = T::class,
-            parameters = parameters
-        )
-    }
+    return getViewModel(
+        qualifier = qualifier,
+        state = state,
+        parameters = parameters,
+        viewModelStoreOwner = navController.backQueue.first()
+    )
 }
 
 /**

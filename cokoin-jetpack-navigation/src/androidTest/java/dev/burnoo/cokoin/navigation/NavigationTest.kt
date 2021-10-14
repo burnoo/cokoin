@@ -2,13 +2,13 @@ package dev.burnoo.cokoin.navigation
 
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.burnoo.cokoin.Koin
-import dev.burnoo.cokoin.navigation.utils.BaseTest
+import org.junit.Rule
 import org.junit.Test
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.koinApplication
@@ -23,7 +23,10 @@ private class TestNavViewModel : ViewModel() {
     }
 }
 
-class NavigationTest : BaseTest() {
+class NavigationTest {
+
+    @get:Rule
+    val composeTestRule = createComposeRule()
 
     @Test
     fun useSameViewModelInstanceInNavigation() {
@@ -78,6 +81,10 @@ class NavigationTest : BaseTest() {
         }
 
         assertText("true")
+    }
+
+    private fun assertText(text: String, index: Int = 0) {
+        composeTestRule.onNode(isRoot()).onChildAt(index).assertTextEquals(text)
     }
 
     private fun clickOnText(text: String) {

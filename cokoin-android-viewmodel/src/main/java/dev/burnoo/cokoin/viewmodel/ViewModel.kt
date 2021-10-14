@@ -5,6 +5,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalSavedStateRegistryOwner
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import dev.burnoo.cokoin.getScope
 import org.koin.androidx.viewmodel.ViewModelOwner
@@ -23,6 +24,7 @@ import org.koin.core.scope.Scope
  * @param qualifier Koin's [Qualifier]
  * @param state initial [BundleDefinition] for ViewModels that uses [SavedStateHandle]
  * @param parameters Koin's [ParametersDefinition]
+ * @param viewModelStoreOwner [ViewModelStoreOwner] used to get [ViewModel]. By default, it uses [LocalViewModelStoreOwner.current]
  */
 @OptIn(KoinInternalApi::class)
 @Composable
@@ -30,8 +32,10 @@ inline fun <reified T : ViewModel> getViewModel(
     qualifier: Qualifier? = null,
     noinline state: BundleDefinition = emptyState(),
     noinline parameters: ParametersDefinition? = null,
+    viewModelStoreOwner: ViewModelStoreOwner? = null
 ): T {
-    val viewModelStoreOwner = LocalViewModelStoreOwner.current
+    val storeOwner = viewModelStoreOwner
+        ?: LocalViewModelStoreOwner.current
         ?: error("LocalViewModelStoreOwner.current is null")
     val savedStateRegistryOwner = LocalSavedStateRegistryOwner.current
     val scope = getScope()
@@ -39,7 +43,7 @@ inline fun <reified T : ViewModel> getViewModel(
         scope.getViewModel(
             qualifier = qualifier,
             state = state,
-            owner = { ViewModelOwner.from(viewModelStoreOwner, savedStateRegistryOwner) },
+            owner = { ViewModelOwner.from(storeOwner, savedStateRegistryOwner) },
             clazz = T::class,
             parameters = parameters
         )
