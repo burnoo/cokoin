@@ -146,7 +146,19 @@ fun Screen1() {
     }
 }
 ```
-
+If you don't want to wrap navigation with `KoinNavHost`,
+you can achieve similar results with `getViewModel` using `viewModelStoreOwner` parameter:
+```kotlin
+@Composable
+fun Screen1(navController: NavController) {
+    Button(onClick = { navController.navigate("2") }) {
+        val viewModel = getViewModel<MainViewModel>(
+            viewModelStoreOwner = navController.getBackStackEntry("root")
+        )
+        //...
+    }
+}
+```
 ## License
 
 ```
