@@ -1,5 +1,7 @@
 plugins {
     id("org.jetbrains.dokka") version Versions.dokka
+    id("com.github.ben-manes.versions") version Versions.gradleVersions
+
 }
 
 buildscript {

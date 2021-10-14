@@ -1,13 +1,14 @@
 object Versions {
-    const val kotlin = "1.5.30"
+    const val kotlin = "1.5.31"
     const val androidGradlePlugin = "4.2.2"
     const val koin = "3.1.2"
-    const val jetbrainsCompose = "1.0.0-alpha4-build366"
-    const val jetpackCompose = "1.0.3"
-    const val jetpackComposeViewModel = "2.4.0-beta01"
-    const val jetpackComposeNavigation = "2.4.0-alpha09"
+    const val jetbrainsCompose = "1.0.0-alpha4-build398"
+    const val jetpackCompose = "1.0.4"
+    const val jetpackComposeViewModel = "2.4.0-rc01"
+    const val jetpackComposeNavigation = "2.4.0-alpha10"
     const val testCore = "1.4.0"
-    const val dokka = "1.4.30"
+    const val dokka = "1.5.31"
+    const val gradleVersions = "0.39.0"
 }
 
 object Deps {
