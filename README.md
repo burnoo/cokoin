@@ -13,14 +13,14 @@ Library is hosted on Maven Central. Add following the packages to your module `b
 ```kotlin
 dependencies {
     // for JetBrains' Compose Multiplatform
-    implementation("dev.burnoo:cokoin:0.2.1")
-    implementation("dev.burnoo:cokoin-android-viewmodel:0.2.1") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-android-navigation:0.2.1") // for Compose Navigation
+    implementation("dev.burnoo:cokoin:0.2.2")
+    implementation("dev.burnoo:cokoin-android-viewmodel:0.2.2") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-android-navigation:0.2.2") // for Compose Navigation
 
     // for Google's Jetpack Compose
-    implementation("dev.burnoo:cokoin-jetpack:0.2.1")
-    implementation("dev.burnoo:cokoin-jetpack-viewmodel:0.2.1") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-jetpack-navigation:0.2.1") // for Compose Navigation
+    implementation("dev.burnoo:cokoin-jetpack:0.2.2")
+    implementation("dev.burnoo:cokoin-jetpack-viewmodel:0.2.2") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-jetpack-navigation:0.2.2") // for Compose Navigation
 
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
