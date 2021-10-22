@@ -41,3 +41,16 @@ afterEvaluate {
         }
     }
 }
+
+configurations.all {
+    resolutionStrategy {
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-debug")
+    }
+}
+
+dependencies {
+    debugImplementation(Deps.JetpackCompose.uiTestManifest)
+    androidTestImplementation(Deps.JetpackCompose.uiTestJUnit)
+    androidTestImplementation(Deps.testCore)
+    androidTestImplementation(Deps.JetpackCompose.material)
+}

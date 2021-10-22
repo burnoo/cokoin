@@ -8,4 +8,6 @@ dependencies {
     api(compose.runtime)
     api(Deps.Koin.android)
     implementation(Deps.JetpackCompose.viewModel)
+
+    androidTestImplementation(Deps.JetpackCompose.navigation)
 }
