@@ -12,15 +12,9 @@ Library is hosted on Maven Central. Add following the packages to your module `b
 
 ```kotlin
 dependencies {
-    // for JetBrains' Compose Multiplatform
-    implementation("dev.burnoo:cokoin:0.2.2")
-    implementation("dev.burnoo:cokoin-android-viewmodel:0.2.2") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-android-navigation:0.2.2") // for Compose Navigation
-
-    // for Google's Jetpack Compose
-    implementation("dev.burnoo:cokoin-jetpack:0.2.2")
-    implementation("dev.burnoo:cokoin-jetpack-viewmodel:0.2.2") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-jetpack-navigation:0.2.2") // for Compose Navigation
+    implementation("dev.burnoo:cokoin:0.3.0")
+    implementation("dev.burnoo:cokoin-android-viewmodel:0.3.0") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-android-navigation:0.3.0") // for Compose Navigation
 
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
@@ -81,10 +75,7 @@ fun Test() {
 
 ### ViewModel
 
-Dependencies:
-
-- `dev.burnoo:cokoin-android-viewmodel:x.y.z` (Multiplatform)
-- `dev.burnoo:cokoin-jetpack-viewmodel:x.y.z` (Jetpack)
+#### `dev.burnoo:cokoin-android-viewmodel:x.y.z`
 
 Call `getViewModel` to obtain `ViewModel` inside `@Composable`:
 
@@ -109,14 +100,11 @@ fun ViewModelSample() {
 `getViewModel`
 supports [Koin's injection parameters](https://insert-koin.io/docs/reference/koin-android/viewmodel/#viewmodel-and-injection-parameters)
 and `SaveStateHandle`. Advanced examples can be
-found [here](cokoin-jetpack-viewmodel/src/androidTest/java/dev/burnoo/cokoin/viewmodel/ViewModelTest.kt).
+found [here](cokoin-android-viewmodel/src/androidTest/java/dev/burnoo/cokoin/viewmodel/ViewModelTest.kt).
 
 ### Compose Navigation
 
-Dependencies:
-
-- `dev.burnoo:cokoin-android-navigation:x.y.z` (Multiplatform)
-- `dev.burnoo:cokoin-jetpack-navigation:x.y.z` (Jetpack)
+#### `dev.burnoo:cokoin-android-navigation:x.y.z`
 
 First replace `NavHost` with `KoinNavHost`:
 
