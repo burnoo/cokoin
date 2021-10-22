@@ -22,7 +22,6 @@ object Deps {
     }
 
     object JetpackCompose {
-        const val runtime = "androidx.compose.runtime:runtime:${Versions.jetpackCompose}"
         const val material = "androidx.compose.material:material:${Versions.jetpackCompose}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.jetpackComposeViewModel}"
         const val navigation = "androidx.navigation:navigation-compose:${Versions.jetpackComposeNavigation}"

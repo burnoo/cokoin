@@ -51,6 +51,6 @@ configurations.all {
 dependencies {
     debugImplementation(Deps.JetpackCompose.uiTestManifest)
     androidTestImplementation(Deps.JetpackCompose.uiTestJUnit)
-    androidTestImplementation(Deps.testCore)
     androidTestImplementation(Deps.JetpackCompose.material)
+    androidTestImplementation(Deps.testCore)
 }
