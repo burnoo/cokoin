@@ -1,7 +1,8 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
     id("org.jetbrains.dokka") version Versions.dokka
     id("com.github.ben-manes.versions") version Versions.gradleVersions
-
 }
 
 buildscript {
@@ -30,5 +31,21 @@ allprojects {
 
     if (!displayName.contains("example")) {
         plugins.apply("org.jetbrains.dokka")
+    }
+}
+
+fun getStabilityLevel(version: String) : Int {
+    val v = version.toUpperCase()
+    return when {
+        v.contains("ALPHA") -> 0
+        v.contains("BETA") -> 1
+        v.contains(Regex("(?:RC)|(?:-M[0-9]+)")) -> 2
+        else -> 3
+    }
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        getStabilityLevel(candidate.version) < getStabilityLevel(currentVersion)
     }
 }
