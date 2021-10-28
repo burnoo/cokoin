@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -48,9 +50,12 @@ configurations.all {
     }
 }
 
+val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
 dependencies {
-    debugImplementation(Deps.JetpackCompose.uiTestManifest)
-    androidTestImplementation(Deps.JetpackCompose.uiTestJUnit)
-    androidTestImplementation(Deps.JetpackCompose.material)
-    androidTestImplementation(Deps.testCore)
+
+    debugImplementation(libs.findDependency("jetpackCompose.uiTestManifest").get())
+    androidTestImplementation(libs.findDependency("jetpackCompose.uiTestJUnit").get())
+    androidTestImplementation(libs.findDependency("jetpackCompose.material").get())
+    androidTestImplementation(libs.findDependency("testCore").get())
 }

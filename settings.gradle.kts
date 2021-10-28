@@ -1,3 +1,5 @@
+enableFeaturePreview("VERSION_CATALOGS")
+
 include(":cokoin")
 include(":cokoin-android-viewmodel")
 include(":cokoin-android-navigation")

@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     `kotlin-dsl`
 }
@@ -7,7 +9,10 @@ repositories {
     google()
 }
 
+val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
 dependencies {
-    implementation("com.android.tools.build:gradle:4.2.2")
-    implementation(kotlin("gradle-plugin", version = "1.5.31"))
+
+    implementation(libs.findDependency("gradle.android").get())
+    implementation(libs.findDependency("gradle.kotlin").get())
 }

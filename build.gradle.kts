@@ -1,8 +1,10 @@
+@file:Suppress("UnstableApiUsage")
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("org.jetbrains.dokka") version Versions.dokka
-    id("com.github.ben-manes.versions") version Versions.gradleVersions
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.dependencyUpdates)
 }
 
 buildscript {
@@ -13,10 +15,9 @@ buildscript {
     }
 
     dependencies {
-        // __LATEST_COMPOSE_RELEASE_VERSION__
-        classpath(Deps.JetbrainsCompose.gradlePlugin)
-        classpath(Deps.androidGradlePlugin)
-        classpath(kotlin("gradle-plugin", version = Versions.kotlin))
+        classpath(libs.gradle.kotlin)
+        classpath(libs.gradle.android)
+        classpath(libs.gradle.jetbrainsCompose)
     }
 }
 
@@ -24,7 +25,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        maven(url = "https://maven.pkg.jetbrains.space/public/p/compose/dev")
         // Needed for dokka
         maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
     }

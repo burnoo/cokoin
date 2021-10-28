@@ -1,0 +1,29 @@
+[versions]
+kotlin = "1.5.31"
+gradleAndroid = "4.2.2"
+koin = "3.1.2"
+jetbrainsCompose = "1.0.0-beta1"
+jetpackCompose = "1.0.4"
+jetpackComposeViewModel = "2.4.0-rc01"
+jetpackComposeNavigation = "2.4.0-alpha10"
+testCore = "1.4.0"
+dokka = "1.5.31"
+dependencyUpdates = "0.39.0"
+
+[libraries]
+gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-android = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroid" }
+gradle-jetbrainsCompose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jetbrainsCompose" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
+jetpackCompose-material = { module = "androidx.compose.material:material", version.ref = "jetpackCompose" }
+jetpackCompose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetpackComposeViewModel" }
+jetpackCompose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "jetpackComposeNavigation" }
+jetpackCompose-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "jetpackCompose" }
+jetpackCompose-uiTestJUnit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "jetpackCompose" }
+testCore = { module = "androidx.test:core", version.ref = "testCore" }
+
+[plugins]
+dependencyUpdates = { id = "com.github.ben-manes.versions", version.ref = "dependencyUpdates" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

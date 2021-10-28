@@ -15,7 +15,7 @@ kotlin {
         named("commonMain") {
             dependencies {
                 api(compose.runtime)
-                api(Deps.Koin.core)
+                api(libs.koin.core)
             }
         }
         named("jvmTest") {
@@ -23,8 +23,8 @@ kotlin {
                 implementation(compose.uiTestJUnit4)
                 implementation(getSkiaDependency())
                 implementation(compose.material)
-                implementation(Deps.testCore)
-                implementation(Deps.Koin.junit4)
+                implementation(libs.testCore)
+                implementation(libs.koin.junit4)
             }
         }
         named("jvmMain")

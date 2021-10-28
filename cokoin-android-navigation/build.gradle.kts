@@ -6,8 +6,8 @@ plugins {
 dependencies {
     api(project(":cokoin"))
     api(compose.runtime)
-    api(Deps.Koin.android)
-    api(Deps.JetpackCompose.navigation)
+    api(libs.koin.android)
+    api(libs.jetpackCompose.navigation)
 
     implementation(project(":cokoin-android-viewmodel"))
 }
