@@ -1,7 +1,11 @@
+name: Publish To Sonatype Repository
+
 on:
   push:
     tags:
       - v[0-9]+*
+  workflow_dispatch:
+
 jobs:
   publish:
     runs-on: macos-latest
