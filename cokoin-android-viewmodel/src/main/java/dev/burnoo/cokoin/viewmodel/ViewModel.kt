@@ -3,7 +3,6 @@ package dev.burnoo.cokoin.viewmodel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalSavedStateRegistryOwner
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
@@ -22,7 +21,6 @@ import org.koin.core.scope.Scope
  *
  * @param T ViewModel type
  * @param qualifier Koin's [Qualifier]
- * @param state initial [BundleDefinition] for ViewModels that uses [SavedStateHandle]
  * @param parameters Koin's [ParametersDefinition]
  * @param viewModelStoreOwner [ViewModelStoreOwner] used to get [ViewModel]. By default, it uses [LocalViewModelStoreOwner.current]
  */
@@ -30,7 +28,6 @@ import org.koin.core.scope.Scope
 @Composable
 inline fun <reified T : ViewModel> getViewModel(
     qualifier: Qualifier? = null,
-    noinline state: BundleDefinition = emptyState(),
     noinline parameters: ParametersDefinition? = null,
     viewModelStoreOwner: ViewModelStoreOwner? = null
 ): T {
@@ -42,13 +39,26 @@ inline fun <reified T : ViewModel> getViewModel(
     return remember(qualifier, parameters) {
         scope.getViewModel(
             qualifier = qualifier,
-            state = state,
             owner = { ViewModelOwner.from(storeOwner, savedStateRegistryOwner) },
-            clazz = T::class,
             parameters = parameters
         )
     }
 }
+
+@Deprecated(
+    "Koin 3.1.3 deprecated state parameter usage. It is not used anymore.",
+    ReplaceWith(
+        "getViewModel(scope, qualifier, parameters)"
+    )
+)
+@OptIn(KoinInternalApi::class)
+@Composable
+inline fun <reified T : ViewModel> getViewModel(
+    qualifier: Qualifier? = null,
+    noinline state: BundleDefinition = emptyState(),
+    noinline parameters: ParametersDefinition? = null,
+    viewModelStoreOwner: ViewModelStoreOwner? = null
+) = getViewModel<T>(qualifier, parameters, viewModelStoreOwner)
 
 @Deprecated(
     message = "Use getViewModel",
@@ -59,4 +69,4 @@ inline fun <reified T : ViewModel> getStateViewModel(
     qualifier: Qualifier? = null,
     noinline state: BundleDefinition = emptyState(),
     noinline parameters: ParametersDefinition? = null,
-): T = getViewModel(qualifier, state, parameters)
+): T = getViewModel(qualifier, parameters)

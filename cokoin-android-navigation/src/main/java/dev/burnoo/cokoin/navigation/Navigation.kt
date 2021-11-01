@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.NavBackStackEntry
@@ -78,23 +77,33 @@ fun KoinNavHost(
  *
  * @param T ViewModel type
  * @param qualifier Koin's [Qualifier]
- * @param state Initial [BundleDefinition] for ViewModels that uses [SavedStateHandle]
  * @param parameters Koin's [ParametersDefinition]
  */
 @Composable
 inline fun <reified T : ViewModel> getNavViewModel(
     qualifier: Qualifier? = null,
-    noinline state: BundleDefinition = emptyState(),
     noinline parameters: ParametersDefinition? = null,
 ): T {
     val navController = getNavController()
     return getViewModel(
         qualifier = qualifier,
-        state = state,
         parameters = parameters,
         viewModelStoreOwner = navController.backQueue.first()
     )
 }
+
+@Deprecated(
+    "Koin 3.1.3 deprecated state parameter usage. It is not used anymore.",
+    ReplaceWith(
+        "getNavViewModel(scope, qualifier, parameters)"
+    )
+)
+@Composable
+inline fun <reified T : ViewModel> getNavViewModel(
+    qualifier: Qualifier? = null,
+    noinline state: BundleDefinition = emptyState(),
+    noinline parameters: ParametersDefinition? = null,
+) = getNavViewModel<T>(qualifier, parameters)
 
 /**
  * Gets current [NavHostController] instance from the closest parent [KoinNav]
