@@ -9,29 +9,32 @@ plugins {
 group = "dev.burnoo"
 version = "0.3.1"
 
-ext {
-    val localPropertiesFile = project.rootProject.file("local.properties")
-    val properties = Properties()
-    val isLocal = localPropertiesFile.exists()
-    if (isLocal) {
-        properties.load(FileInputStream(localPropertiesFile))
-    }
-    set("signing.keyId", if (isLocal) properties.getProperty("signing.keyId") else System.getenv("SIGNING_KEY_ID"))
-    set(
-        "signing.password",
-        if (isLocal) properties.getProperty("signing.password") else System.getenv("SIGNING_PASSWORD")
-    )
-    set(
-        "signing.secretKeyRingFile",
-        if (isLocal) properties.getProperty("signing.secretKeyRingFile") else System.getenv("SIGNING_SECRET_KEY_RING_FILE")
-    )
-    set("ossrhUsername", if (isLocal) properties.getProperty("ossrhUsername") else System.getenv("OSSRH_USERNAME"))
-    set("ossrhPassword", if (isLocal) properties.getProperty("ossrhPassword") else System.getenv("OSSRH_PASSWORD"))
-    set(
-        "sonatypeStagingProfileId",
-        if (isLocal) properties.getProperty("sonatypeStagingProfileId") else System.getenv("SONATYPE_STAGING_PROFILE_ID")
-    )
+val localPropertiesFile: File = project.rootProject.file("local.properties")
+val properties = Properties()
+val isLocal = localPropertiesFile.exists()
+if (isLocal) {
+    properties.load(FileInputStream(localPropertiesFile))
 }
+val signingPassword: String =
+    if (isLocal) properties.getProperty("signing.password") else System.getenv("SIGNING_PASSWORD")
+val signingKey: String =
+    if (isLocal) properties.getProperty("signing.secretKey") else System.getenv("SIGNING_SECRET_KEY")
+ext.set("signing.keyId", if (isLocal) properties.getProperty("signing.keyId") else System.getenv("SIGNING_KEY_ID"))
+ext.set("signing.password", signingPassword)
+ext.set(
+    "signing.secretKeyRingFile",
+    if (isLocal) properties.getProperty("signing.secretKeyRingFile") else System.getenv("SIGNING_SECRET_KEY_RING_FILE")
+)
+ext.set(
+    "signing.secretKey",
+    if (isLocal) properties.getProperty("signing.secretKey") else System.getenv("SIGNING_SECRET_KEY")
+)
+ext.set("ossrhUsername", if (isLocal) properties.getProperty("ossrhUsername") else System.getenv("OSSRH_USERNAME"))
+ext.set("ossrhPassword", if (isLocal) properties.getProperty("ossrhPassword") else System.getenv("OSSRH_PASSWORD"))
+ext.set(
+    "sonatypeStagingProfileId",
+    if (isLocal) properties.getProperty("sonatypeStagingProfileId") else System.getenv("SONATYPE_STAGING_PROFILE_ID")
+)
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
@@ -88,5 +91,10 @@ afterEvaluate {
 }
 
 signing {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    if (signingKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+    }
     sign(publishing.publications)
 }
