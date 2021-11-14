@@ -1,8 +1,13 @@
 import org.jetbrains.compose.compose
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
+}
+
+rootProject.extensions.configure<NodeJsRootExtension> {
+    versions.webpackCli.version = "4.9.1"
 }
 
 kotlin {
