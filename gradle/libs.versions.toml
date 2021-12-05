@@ -7,7 +7,7 @@ jetpackCompose = "1.0.5"
 jetpackComposeViewModel = "2.4.0"
 jetpackComposeNavigation = "2.4.0-beta02"
 testCore = "1.4.0"
-dokka = "1.5.31"
+dokka = "1.6.0"
 dependencyUpdates = "0.39.0"
 
 [libraries]
