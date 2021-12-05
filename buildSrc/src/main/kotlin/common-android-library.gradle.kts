@@ -14,7 +14,7 @@ android {
         minSdk = 21
         targetSdk = 31
 
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
