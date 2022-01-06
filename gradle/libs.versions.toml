@@ -8,7 +8,7 @@ jetpackComposeViewModel = "2.4.0"
 jetpackComposeNavigation = "2.4.0-beta02"
 testCore = "1.4.0"
 dokka = "1.6.0"
-dependencyUpdates = "0.39.0"
+dependencyUpdates = "0.41.0"
 
 [libraries]
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
