@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.5.31"
+kotlin = "1.6.10"
 gradleAndroid = "7.0.4"
 koin = "3.1.4"
 jetbrainsCompose = "1.0.1"
