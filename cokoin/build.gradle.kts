@@ -55,7 +55,7 @@ fun getSkiaDependency() : String {
         else -> error("Unsupported arch: $osArch")
     }
 
-    val version = "0.6.7"
+    val version = "0.6.8"
     val target = "${targetOs}-${targetArch}"
     return "org.jetbrains.skiko:skiko-jvm-runtime-$target:$version"
 }
