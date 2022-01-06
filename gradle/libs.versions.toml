@@ -2,7 +2,7 @@
 kotlin = "1.5.31"
 gradleAndroid = "7.0.4"
 koin = "3.1.4"
-jetbrainsCompose = "1.0.0"
+jetbrainsCompose = "1.0.1"
 jetpackCompose = "1.0.5"
 jetpackComposeViewModel = "2.4.0"
 jetpackComposeNavigation = "2.4.0-beta02"
