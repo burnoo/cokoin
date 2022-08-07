@@ -2,8 +2,12 @@ package dev.burnoo.cokoin.viewmodel
 
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onChildAt
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.NavHost
@@ -52,14 +56,14 @@ class ViewModelTest {
     @Test
     fun getViewModelWithParametersFromKoinModule() {
         val module = module {
-            viewModel { params -> TestViewModel(params.get(), params.get()) }
+            viewModel { TestViewModel(text = get()) }
         }
 
         composeTestRule.setContent {
             Koin(appDeclaration = { modules(module) }) {
                 val viewModel =
                     getViewModel<TestViewModel>(parameters = {
-                        parametersOf(null, "ParameterText")
+                        parametersOf("ParameterText")
                     })
                 Text(viewModel.text)
             }

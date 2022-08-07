@@ -92,6 +92,7 @@ inline fun <reified T : ViewModel> getNavViewModel(
     )
 }
 
+@Suppress("UNUSED_PARAMETER", "UNUSED")
 @Deprecated(
     "Koin 3.1.3 deprecated state parameter usage. It is not used anymore.",
     ReplaceWith(
