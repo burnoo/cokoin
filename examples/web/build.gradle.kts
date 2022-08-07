@@ -7,7 +7,8 @@ plugins {
 }
 
 rootProject.extensions.configure<NodeJsRootExtension> {
-    versions.webpackCli.version = "4.9.1"
+    versions.webpackCli.version = "4.10.0"
+    nodeVersion = "16.16.0"
 }
 
 kotlin {

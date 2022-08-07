@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = 32
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 32
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,8 +54,8 @@ val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().name
 
 dependencies {
 
-    debugImplementation(libs.findDependency("jetpackCompose.uiTestManifest").get())
-    androidTestImplementation(libs.findDependency("jetpackCompose.uiTestJUnit").get())
-    androidTestImplementation(libs.findDependency("jetpackCompose.material").get())
-    androidTestImplementation(libs.findDependency("testCore").get())
+    debugImplementation(libs.findLibrary("jetpackCompose.uiTestManifest").get())
+    androidTestImplementation(libs.findLibrary("jetpackCompose.uiTestJUnit").get())
+    androidTestImplementation(libs.findLibrary("jetpackCompose.material").get())
+    androidTestImplementation(libs.findLibrary("testCore").get())
 }
