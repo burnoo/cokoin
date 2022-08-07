@@ -8,7 +8,7 @@ jetpackComposeActivity = "1.5.1"
 jetpackComposeNavigation = "2.5.1"
 jetpackComposeViewModel = "2.5.1"
 testCore = "1.4.0"
-dokka = "1.7.10"
+dokka = "1.6.10"
 dependencyUpdates = "0.42.0"
 
 [libraries]
