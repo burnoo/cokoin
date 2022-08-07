@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.burnoo"
-version = "0.3.3"
+version = "0.3.4"
 
 ext {
     val localPropertiesFile = project.rootProject.file("local.properties")
