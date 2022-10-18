@@ -12,9 +12,9 @@ Library is hosted on Maven Central. Add following the packages to your module `b
 
 ```kotlin
 dependencies {
-    implementation("dev.burnoo:cokoin:0.3.4")
-    implementation("dev.burnoo:cokoin-android-viewmodel:0.3.4") // for Androidx ViewModel
-    implementation("dev.burnoo:cokoin-android-navigation:0.3.4") // for Compose Navigation
+    implementation("dev.burnoo:cokoin:1.0.0")
+    implementation("dev.burnoo:cokoin-android-viewmodel:1.0.0") // for Androidx ViewModel
+    implementation("dev.burnoo:cokoin-android-navigation:1.0.0") // for Compose Navigation
 
     // REMOVE "org.koin:koin-androidx-compose:X.Y.Z" if you were using it
 }
