@@ -11,7 +11,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 
     dependencies {
@@ -25,7 +24,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven(url = "https://maven.pkg.jetbrains.space/public/p/compose/dev")
         // Needed for dokka
         maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
     }
