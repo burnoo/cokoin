@@ -8,7 +8,7 @@ jetpackComposeActivity = "1.6.0"
 jetpackComposeNavigation = "2.5.2"
 jetpackComposeViewModel = "2.5.1"
 testCore = "1.4.0"
-dokka = "1.6.10"
+dokka = "1.7.20"
 dependencyUpdates = "0.43.0"
 
 [libraries]
@@ -26,6 +26,7 @@ jetpackCompose-ui = { module = "androidx.compose.ui:ui", version.ref = "jetpackC
 jetpackCompose-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "jetpackCompose" }
 jetpackCompose-uiTestJUnit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "jetpackCompose" }
 testCore = { module = "androidx.test:core", version.ref = "testCore" }
+dokka-core = { module = "org.jetbrains.dokka:dokka-core", version.ref = "dokka" }
 
 [plugins]
 dependencyUpdates = { id = "com.github.ben-manes.versions", version.ref = "dependencyUpdates" }

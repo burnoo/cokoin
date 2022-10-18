@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.dokka)
+    alias(libs.plugins.dokka) apply false
     alias(libs.plugins.dependencyUpdates)
 }
 
