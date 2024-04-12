@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.7.10"
 gradleAndroid = "7.4.1"
-koin = "3.2.2"
+koin = "3.5.6"
 jetbrainsCompose = "1.2.1"
 jetpackCompose = "1.3.1"
 jetpackComposeActivity = "1.6.1"
