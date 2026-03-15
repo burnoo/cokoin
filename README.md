@@ -1,3 +1,35 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=burnoo&project=cokoin&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div>
+
 # 🥥 Cokoin
 
 [![Maven Central](https://img.shields.io/maven-central/v/dev.burnoo/cokoin)](https://search.maven.org/search?q=dev.burnoo.cokoin)
